@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'ui/views/home_page.dart';
+import 'core/services/route_service.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      initialRoute: '/',
+      onGenerateRoute: RouteGeneratorService.generateRoute,
     );
   }
 }

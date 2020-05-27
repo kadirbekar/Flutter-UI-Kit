@@ -1,9 +1,9 @@
-import 'package:bip_ui/ui/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 import '../shared/ui_color_helper.dart';
 import '../shared/ui_text_helper.dart';
+import '../widgets/bottom_nav_bar.dart';
 import 'chat_page.dart';
 import 'services_page.dart';
 
@@ -13,8 +13,6 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-
-int currentIndex = 0;
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -40,28 +38,34 @@ class _HomePageState extends State<HomePage> {
   Widget get fabButtons => Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          FloatingActionButton(
-            backgroundColor: Colors.red,
-            onPressed: () => print("test"),
-            child: Icon(
-              LineAwesomeIcons.smile_o,
-              color: Colors.white,
-              size: 35,
-            ),
-          ),
+          smileFabButton,
           SizedBox(
             height: 10,
           ),
-          FloatingActionButton(
-            backgroundColor: Colors.blue,
-            onPressed: () => print("test"),
-            child: Icon(
-              LineAwesomeIcons.comment,
-              color: Colors.white,
-              size: 35,
-            ),
-          ),
+          messageFabButton,
         ],
+      );
+
+  Widget get messageFabButton => FloatingActionButton(
+        heroTag: 'smile',
+        backgroundColor: UIColorHelper.FAB_MESSAGE_BACKGROUND,
+        onPressed: () => print("test"),
+        child: Icon(
+          LineAwesomeIcons.comment,
+          color: Colors.white,
+          size: 35,
+        ),
+      );
+
+  Widget get smileFabButton => FloatingActionButton(
+        heroTag: 'message',
+        backgroundColor: UIColorHelper.FAB_SMILE_BACKGROUND,
+        onPressed: () => print("test"),
+        child: Icon(
+          LineAwesomeIcons.smile_o,
+          color: Colors.white,
+          size: 35,
+        ),
       );
 
   Widget get appbar => AppBar(
@@ -93,14 +97,17 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(left: 10),
             child: Image.asset(UITextHelper.APPBAR_LOGO)),
         actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(right: 5),
-            child: IconButton(
-                icon: Icon(
-                  LineAwesomeIcons.search,
-                ),
-                onPressed: () => print("test")),
-          )
+          searchIcon,
         ],
+      );
+
+  Widget get searchIcon => Padding(
+        padding: EdgeInsets.only(right: 5),
+        child: IconButton(
+          icon: Icon(
+            LineAwesomeIcons.search,
+          ),
+          onPressed: () => Navigator.of(context).pushNamed('/calls'),
+        ),
       );
 }

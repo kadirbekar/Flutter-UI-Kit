@@ -18,47 +18,48 @@ class _ChatPageState extends State<ChatPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              "Let's Get BiP'N!",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 26.0,
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                style: Theme.of(context).textTheme.bodyText1,
-                children: [
-                  TextSpan(
-                    text: 'To start a new chat, tap ',
-                    style: TextStyle(
-                      fontSize: 24.0,
-                      color: Colors.grey
-                    ),
-                  ),
-                  WidgetSpan(
-                    child: Padding(
-                      padding: EdgeInsets.all(2),
-                      child: Icon(
-                        LineAwesomeIcons.comment,
-                        color: UIColorHelper.TABBAR_COLOR,
-                      ),
-                    ),
-                  ),
-                  TextSpan(
-                    text: '\n icon and select a contact',
-                    style: TextStyle(fontSize: 24.0, color: Colors.grey),
-                  ),
-                ],
-              ),
-            ),
+            title,
+            sizedBox,
+            content,
           ],
         ),
       ),
     );
   }
+
+  Widget get sizedBox => SizedBox(
+        height: 15);
+
+  Widget get title => Text(
+        "Let's Get BiP'N!",
+        style: TextStyle(
+            color: Colors.white, fontSize: 26.0, fontWeight: FontWeight.w700),
+      );
+
+  Widget get content => RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          style: Theme.of(context).textTheme.bodyText1,
+          children: [
+            TextSpan(
+              text: 'To start a new chat, tap ',
+              style: TextStyle(fontSize: 24.0, color: Colors.grey),
+            ),
+            WidgetSpan(
+              child: Padding(
+                padding: EdgeInsets.all(2),
+                child: Icon(
+                  LineAwesomeIcons.comment,
+                  color: UIColorHelper.TABBAR_COLOR,
+                  size: 30,
+                ),
+              ),
+            ),
+            TextSpan(
+              text: '\n icon and select a contact',
+              style: TextStyle(fontSize: 24.0, color: Colors.grey),
+            ),
+          ],
+        ),
+      );
 }
