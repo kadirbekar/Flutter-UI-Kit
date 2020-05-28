@@ -1,27 +1,25 @@
-import 'package:bip_ui/ui/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
-class MorePage extends StatefulWidget {
-  MorePage({Key key}) : super(key: key);
+class DiscoverPage extends StatefulWidget {
+  DiscoverPage({Key key}) : super(key: key);
 
   @override
-  _MorePageState createState() => _MorePageState();
+  _DiscoverPageState createState() => _DiscoverPageState();
 }
 
-class _MorePageState extends State<MorePage> {
+class _DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MyBottomNavBar(),
       appBar: AppBar(
         title: Text(
-          "User Info",
+          "Discover Page",
           style: TextStyle(color: Colors.white),
         ),
       ),
       body: Center(
         child: Text(
-          "User Info",
+          "Discover Page",
           style: TextStyle(color: Colors.white),
         ),
       ),
