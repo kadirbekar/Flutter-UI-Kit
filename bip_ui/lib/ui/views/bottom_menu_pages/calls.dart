@@ -1,9 +1,9 @@
-import 'package:bip_ui/ui/shared/ui_color_helper.dart';
-import 'package:bip_ui/ui/shared/ui_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 import '../../shared/common_widgets.dart' as common;
+import '../../shared/ui_color_helper.dart';
+import '../../shared/ui_text_helper.dart';
 
 class Calls extends StatefulWidget {
   Calls({Key key}) : super(key: key);
@@ -36,14 +36,8 @@ class _CallsState extends State<Calls> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: common.leadingImage,
-        centerTitle: true,
-        title: common.appbarText(UITextHelper.CALLS_PAGE_APPBAR_TEXT),
-        actions: <Widget>[
-          common.searchIcon(context),
-        ],
-      ),
+      floatingActionButton: fabButtons,
+      appBar: appbar,
       body: ListView(
         children: <Widget>[
           expansionTile,
@@ -77,7 +71,46 @@ class _CallsState extends State<Calls> {
     );
   }
 
-  Widget get returnMyContacts => ListView.builder(
+  Widget get fabButtons => Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          phoneFabButton,
+          common.sizedBox(height: 10),
+          numbersFabButton,
+          common.sizedBox(height: 50),
+        ],
+      );
+
+  Widget get phoneFabButton => FloatingActionButton(
+        backgroundColor: Colors.red,
+        onPressed: () {},
+        child: Icon(
+          LineAwesomeIcons.phone,
+          color: Colors.white,
+          size: 35,
+        ),
+      );
+
+  Widget get numbersFabButton => FloatingActionButton(
+        backgroundColor: Colors.grey,
+        onPressed: () {},
+        child: Icon(
+          LineAwesomeIcons.tty,
+          color: Colors.white,
+          size: 35,
+        ),
+      );
+
+  Widget get appbar => AppBar(
+        leading: common.leadingImage,
+        centerTitle: true,
+        title: common.appbarText(UITextHelper.CALLS_PAGE_APPBAR_TEXT),
+        actions: <Widget>[
+          common.searchIcon(context),
+        ],
+      );
+
+  Widget get returnMyContacts => ListView.separated(
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) {
@@ -96,22 +129,25 @@ class _CallsState extends State<Calls> {
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Icon(
-                  LineAwesomeIcons.video_camera,
-                  size: 35,
-                  color: UIColorHelper.TABBAR_COLOR,
-                ),
+                listTileIcon(LineAwesomeIcons.video_camera),
                 common.sizedBox(width: 10),
-                Icon(
-                  LineAwesomeIcons.phone,
-                  size: 35,
-                  color: UIColorHelper.TABBAR_COLOR,
-                ),
+                listTileIcon(LineAwesomeIcons.phone),
+                common.sizedBox(width: 10),
               ],
             ),
           );
         },
         itemCount: names.length,
+        separatorBuilder: (context, index) => Divider(
+          color: Colors.grey,
+          indent: 75,
+        ),
+      );
+
+  Widget listTileIcon(IconData iconData) => Icon(
+        iconData,
+        size: 35,
+        color: UIColorHelper.TABBAR_COLOR,
       );
 
   Widget get bipContactsLabel => Padding(

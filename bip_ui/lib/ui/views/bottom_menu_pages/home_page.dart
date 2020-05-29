@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 
+import '../../shared/common_widgets.dart' as common;
 import '../../shared/ui_color_helper.dart';
 import '../../shared/ui_text_helper.dart';
 import '../chat_page.dart';
 import '../services_page.dart';
-import 'package:bip_ui/ui/shared/common_widgets.dart' as common;
 
 class MessagesPage extends StatefulWidget {
   MessagesPage({Key key}) : super(key: key);
@@ -40,6 +40,7 @@ class _MessagesPageState extends State<MessagesPage> {
           smileFabButton,
           common.sizedBox(height: 10),
           messageFabButton,
+          common.sizedBox(height: 53),
         ],
       );
 

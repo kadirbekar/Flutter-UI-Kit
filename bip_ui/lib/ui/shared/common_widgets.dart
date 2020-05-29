@@ -14,7 +14,7 @@ Widget searchIcon(BuildContext context) => Padding(
         icon: Icon(
           LineAwesomeIcons.search,
         ),
-        onPressed: () => Navigator.of(context).pushNamed('/calls'),
+        onPressed: () => print("test"),
       ),
     );
 

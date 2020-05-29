@@ -1,6 +1,7 @@
-import 'package:bip_ui/ui/custom_navigation_bar/tab_items.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'tab_items.dart';
 
 class CustomNavBar extends StatelessWidget {
   const CustomNavBar(
