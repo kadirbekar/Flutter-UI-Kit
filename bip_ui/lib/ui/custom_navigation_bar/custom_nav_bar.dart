@@ -3,13 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomNavBar extends StatelessWidget {
-  const CustomNavBar({Key key,@required this.currentTab,@required this.onSelectedTab,@required this.createdPage,@required this.navigatorKeys}) : super(key: key);
+  const CustomNavBar(
+      {Key key,
+      @required this.currentTab,
+      @required this.onSelectedTab,
+      @required this.createdPage,
+      @required this.navigatorKeys})
+      : super(key: key);
 
   final TabItem currentTab;
   final ValueChanged<TabItem> onSelectedTab;
-  final Map<TabItem,Widget> createdPage;
-  final Map<TabItem,GlobalKey<NavigatorState>> navigatorKeys;
-
+  final Map<TabItem, Widget> createdPage;
+  final Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,7 @@ class CustomNavBar extends StatelessWidget {
         ],
         onTap: (index) => onSelectedTab(TabItem.values[index]),
       ),
-      tabBuilder: (context,index) {
+      tabBuilder: (context, index) {
         final showedItem = TabItem.values[index];
 
         return CupertinoTabView(
@@ -40,6 +45,14 @@ class CustomNavBar extends StatelessWidget {
     final createdTab = TabItemData.allTabs[tabItem];
 
     return BottomNavigationBarItem(
-        icon: Icon(createdTab.icon), title: Text(createdTab.title));
+      icon: Icon(
+        createdTab.icon,
+        size: 30,
+      ),
+      title: Text(
+        createdTab.title,
+        style: TextStyle(fontSize: 16.0),
+      ),
+    );
   }
 }

@@ -5,6 +5,7 @@ import '../../shared/ui_color_helper.dart';
 import '../../shared/ui_text_helper.dart';
 import '../chat_page.dart';
 import '../services_page.dart';
+import 'package:bip_ui/ui/shared/common_widgets.dart' as common;
 
 class MessagesPage extends StatefulWidget {
   MessagesPage({Key key}) : super(key: key);
@@ -37,9 +38,7 @@ class _MessagesPageState extends State<MessagesPage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           smileFabButton,
-          SizedBox(
-            height: 10,
-          ),
+          common.sizedBox(height: 10),
           messageFabButton,
         ],
       );
@@ -91,21 +90,9 @@ class _MessagesPageState extends State<MessagesPage> {
           UITextHelper.HOME_PAGE_APPBAR_TEXT,
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
         ),
-        leading: Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: Image.asset(UITextHelper.APPBAR_LOGO)),
+        leading: common.leadingImage,
         actions: <Widget>[
-          searchIcon,
+          common.searchIcon(context),
         ],
-      );
-
-  Widget get searchIcon => Padding(
-        padding: EdgeInsets.only(right: 5),
-        child: IconButton(
-          icon: Icon(
-            LineAwesomeIcons.search,
-          ),
-          onPressed: () => Navigator.of(context).pushNamed('/calls'),
-        ),
       );
 }
