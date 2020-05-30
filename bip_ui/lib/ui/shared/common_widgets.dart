@@ -1,7 +1,8 @@
-import 'package:bip_ui/ui/shared/ui_text_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+
+import 'ui_text_helper.dart';
 
 Widget sizedBox({double width = 0, double height = 0}) => SizedBox(
       width: width,
@@ -26,4 +27,17 @@ Widget appbarText(String label) => Text(
       label,
       style: TextStyle(
           color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600),
+    );
+
+Widget listTile(String label, IconData icon) => ListTile(
+      leading: Icon(
+        icon,
+        size: 35,
+        color: Colors.grey,
+      ),
+      title: Text(
+        label,
+        style: TextStyle(
+            fontSize: 19, color: Colors.white, fontWeight: FontWeight.w700),
+      ),
     );
